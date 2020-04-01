@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StockViewerModelStoreContainer" CdmEntityContainer="StockViewerEntities">
+    <EntitySetMapping Name="StockTrends">
+      <EntityTypeMapping TypeName="StockViewerModel.StockTrend">
+        <MappingFragment StoreEntitySet="StockTrend">
+          <ScalarProperty Name="StockSymbol" ColumnName="StockSymbol" />
+          <ScalarProperty Name="StockName" ColumnName="StockName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Change" ColumnName="Change" />
+          <ScalarProperty Name="YearHigh" ColumnName="YearHigh" />
+          <ScalarProperty Name="YearLow" ColumnName="YearLow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AllCompanies">
+      <EntityTypeMapping TypeName="StockViewerModel.AllCompany">
+        <MappingFragment StoreEntitySet="AllCompanies">
+          <ScalarProperty Name="Exchange" ColumnName="Exchange" />
+          <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertAllCompanies" FunctionName="StockViewerModel.Store.InsertAllCompanies" />
+  </EntityContainerMapping>
+</Mapping>

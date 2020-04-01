@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockViewerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'StockViewer.dbo.AllCompanies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AllCompanies">
+    <Key>
+      <PropertyRef Name="Symbol" />
+    </Key>
+    <Property Name="Exchange" Type="nvarchar" MaxLength="1" />
+    <Property Name="Symbol" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Price" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StockTrend">
+    <Key>
+      <PropertyRef Name="StockSymbol" />
+    </Key>
+    <Property Name="StockSymbol" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="StockName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="nvarchar" MaxLength="1" />
+    <Property Name="TimeStamp" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Change" Type="nvarchar" MaxLength="1" />
+    <Property Name="YearHigh" Type="nvarchar" MaxLength="1" />
+    <Property Name="YearLow" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <Function Name="InsertAllCompanies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="StockViewerModelStoreContainer">
+    <EntitySet Name="StockTrend" EntityType="Self.StockTrend" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllCompanies" EntityType="Self.AllCompanies" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AllCompanies].[Exchange] AS [Exchange], 
+    [AllCompanies].[Symbol] AS [Symbol], 
+    [AllCompanies].[Name] AS [Name], 
+    [AllCompanies].[Price] AS [Price]
+    FROM [dbo].[AllCompanies] AS [AllCompanies]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

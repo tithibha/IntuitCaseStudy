@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockViewerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="StockTrend">
+    <Key>
+      <PropertyRef Name="StockSymbol" />
+    </Key>
+    <Property Name="StockSymbol" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StockName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStamp" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Change" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="YearHigh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="YearLow" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AllCompany">
+    <Key>
+      <PropertyRef Name="Symbol" />
+    </Key>
+    <Property Name="Exchange" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Symbol" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="StockViewerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="StockTrends" EntityType="Self.StockTrend" />
+    <EntitySet Name="AllCompanies" EntityType="Self.AllCompany" />
+    <FunctionImport Name="InsertAllCompanies" />
+  </EntityContainer>
+</Schema>
